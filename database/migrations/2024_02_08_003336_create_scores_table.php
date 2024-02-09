@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            //CPF como chave estrangeira
             $table->string('cpf');
             $table->foreign('cpf')->references('cpf')->on('clients')->onDelete('cascade');
             $table->string('contatos_id');
