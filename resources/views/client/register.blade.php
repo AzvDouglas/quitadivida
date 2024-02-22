@@ -48,4 +48,8 @@
             </x-primary-button>
         </div>
     </form>
+<!--Errro ao cadastrar-->
+    @if ($message = Session::get('erro'))
+    <p>{{$error}}</p>
+    @endif
 </x-guest-layout>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Cliente;
 
 class ClienteController extends Controller
@@ -42,15 +42,15 @@ class ClienteController extends Controller
                 'nascimento' => 'required|date',
             ]);
 
-
             // Criar um novo cliente
-            Cliente::create([
-                'cpf' => $request->cpf,
-                'nome' => $request->nome,
-                'telefones' => $request->telefones,
-                'emails' => $request->emails,
-                'nascimento' => $request->nascimento,
-            ]);
+            $cliente = new Cliente();
+            $cliente->cpf = $request->cpf;
+            $cliente->nome = $request->nome;
+            $cliente->telefones = $request->telefones;
+            $cliente->emails = $request->emails;
+            $cliente->nascimento = $request->nascimento;
+            $cliente->user_id = Auth::id();
+            $cliente->save();
 
             // Redirecionar ou retornar uma resposta
             return redirect()->route('dashboard')->with('success', 'Cadastro finalizado com sucesso!');
