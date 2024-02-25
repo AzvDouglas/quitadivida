@@ -53,4 +53,4 @@ Route::get('/not-admin', function() {
     return view('auth.admin-denied');
 })->name('not-admin');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
