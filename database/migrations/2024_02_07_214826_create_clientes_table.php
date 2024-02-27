@@ -13,12 +13,8 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->string('cpf')->primary();
-            //user_id como  chave estrangeira para relacionar com a tabela users
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('nome');
             $table->string('telefones');
             $table->string('emails');

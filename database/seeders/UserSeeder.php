@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class AdminUserSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     public function run()
     {
@@ -17,5 +17,13 @@ class AdminUserSeeder extends Seeder
             'password' => Hash::make('hashsolucoes'),
             'role' => 'admin',
         ]);
+        
+        DB::table('users')->insert([
+            'name' => 'Common User',
+            'email' => 'common@hashmail.com',
+            'password' => Hash::make('password'),
+            'role' => 'common',
+        ]);
+        
     }
 }

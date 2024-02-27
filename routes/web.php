@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 */
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin' ,[AdminController::class,'index'])->name('admin.index');
-    
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
 });
 Route::get('/not-admin', function() {
     return view('auth.admin-denied');

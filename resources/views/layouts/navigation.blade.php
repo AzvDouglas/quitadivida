@@ -15,7 +15,7 @@
                 <!------------------------------------------------>
                     <!----------------------Admin links---------------------->
                     @if(auth()->user() && auth()->user()->role === 'admin')
-                    <x-nav-link >
+                    <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
                     
@@ -27,6 +27,9 @@
                         {{ __('Contratos') }}
                     </x-nav-link>
                     
+                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
                     <!-------------------------------------------->
                     @else
                     <!-----------------  Common user links --------------------->

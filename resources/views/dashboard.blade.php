@@ -9,7 +9,7 @@
 <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-@if (!$cliente)
+@if (!$cliente && !Auth::user()->isAdmin())
     <p class="text-red-500">Conclua seu cadastro para ter acesso a todas as funcionalidades.</p>
     <div class="mt-4">
         <a href="{{ route('cliente.create') }}"
